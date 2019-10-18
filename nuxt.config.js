@@ -48,7 +48,9 @@ export default {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseURL: 'https://nuxt-blog-service-t3yamoto.firebaseio.com'
+  },
   /*
    ** Build configuration
    */
