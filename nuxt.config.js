@@ -17,6 +17,9 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
+  router: {
+    middleware: ['auth-cookie']
+  },
   /*
    ** Customize the progress-bar color
    */
@@ -59,6 +62,19 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) {
+      if (ctx.dev && ctx.isClient) {
+        config.devtool = 'inline-cheap-module-source-map'
+        config.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /(node_modules)/,
+          options: {
+            fix: true
+          }
+        })
+      }
+    }
   }
 }

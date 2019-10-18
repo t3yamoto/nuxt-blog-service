@@ -10,7 +10,9 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "test": "jest"
+    "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
+    "test": "jest",
+    "debug": "node --inspect-brk=9229 node_modules/nuxt/bin/nuxt"
   },
   "lint-staged": {
     "*.{js,vue}": "eslint"
@@ -21,10 +23,11 @@
     }
   },
   "dependencies": {
-    "nuxt": "^2.0.0",
-    "element-ui": "^2.4.11",
     "@nuxtjs/axios": "^5.3.6",
-    "@nuxtjs/pwa": "^3.0.0-0"
+    "@nuxtjs/pwa": "^3.0.0-0",
+    "element-ui": "^2.4.11",
+    "nuxt": "^2.0.0",
+    "universal-cookie": "^4.0.2"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.0.1",
