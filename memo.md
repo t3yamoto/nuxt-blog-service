@@ -1,0 +1,3 @@
+- `assets`, `components` 等は `app` ディレクトリにまとめておくと、パスの指定等で便利
+- ページで一つしか存在しないコンポーネントは `The` を付ける
+  - [スタイルガイド — Vue.js](https://jp.vuejs.org/v2/style-guide/index.html) を参照
