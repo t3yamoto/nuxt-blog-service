@@ -2,3 +2,4 @@
 - ページで一つしか存在しないコンポーネントは `The` を付ける
   - [スタイルガイド — Vue.js](https://jp.vuejs.org/v2/style-guide/index.html) を参照
 - `middleware` は `routing` 時の前処理。ログイン済チェック等に使える。
+- `plugins` はライブラリの初期設定等に使える。

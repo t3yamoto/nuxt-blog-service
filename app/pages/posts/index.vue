@@ -2,7 +2,12 @@
   <section class="container posts-page">
     <el-card>
       <div slot="header" class="clearfix"><span>新着投稿</span></div>
-      <el-table :data="showPosts" style="width:100%" class="table">
+      <el-table
+        :data="showPosts"
+        style="width:100%"
+        class="table"
+        @row-click="handleClick"
+      >
         <el-table-column prop="title" label="タイトル"></el-table-column>
         <el-table-column
           prop="user.id"
@@ -20,29 +25,27 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import clonedeep from 'lodash.clonedeep'
+import moment from '~/plugins/moment'
+
 export default {
   computed: {
     showPosts() {
-      return [
-        {
-          id: '001',
-          title: 'title001',
-          body: 'body001',
-          created_at: '2018/08/10 12:00:00',
-          user: {
-            id: 'taro'
-          }
-        },
-        {
-          id: '002',
-          title: 'title002',
-          body: 'body002',
-          created_at: '2018/08/11 12:00:00',
-          user: {
-            id: 'hanako'
-          }
-        }
-      ]
+      const newPosts = clonedeep(this.posts)
+      return newPosts.map((post) => {
+        post.created_at = moment(post.created_at).format('YYYY/MM/DD HH:mm:ss')
+        return post
+      })
+    },
+    ...mapGetters('posts', ['posts'])
+  },
+  async asyncData({ store }) {
+    await store.dispatch('posts/fetchPosts')
+  },
+  methods: {
+    handleClick(post) {
+      this.$router.push(`/posts/${post.id}`)
     }
   }
 }
