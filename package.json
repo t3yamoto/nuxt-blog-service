@@ -28,7 +28,7 @@
     "element-ui": "^2.4.11",
     "lodash.clonedeep": "^4.5.0",
     "moment": "^2.24.0",
-    "nuxt": "^2.0.0",
+    "nuxt": "^3.4.3",
     "universal-cookie": "^4.0.2"
   },
   "devDependencies": {
